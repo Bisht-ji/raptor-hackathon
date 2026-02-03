@@ -1,0 +1,285 @@
+/* Crash Effects Styling */
+
+.crash-shake-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.crash-shake-container.shaking {
+  animation: violent-shake 0.3s infinite;
+}
+
+@keyframes violent-shake {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-15px, 10px) rotate(-2deg); }
+  20% { transform: translate(15px, -10px) rotate(2deg); }
+  30% { transform: translate(-10px, -15px) rotate(-1deg); }
+  40% { transform: translate(10px, 15px) rotate(1deg); }
+  50% { transform: translate(-15px, -5px) rotate(-2deg); }
+  60% { transform: translate(15px, 5px) rotate(2deg); }
+  70% { transform: translate(-5px, -15px) rotate(-1deg); }
+  80% { transform: translate(5px, 15px) rotate(1deg); }
+  90% { transform: translate(-10px, 10px) rotate(-2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.crash-red-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255,0,0,0.9) 0%, rgba(139,0,0,0.8) 100%);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+.crash-static-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.05) 2px,
+      rgba(255, 255, 255, 0.05) 4px
+    );
+  animation: static-flicker 0.1s infinite;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 10001;
+}
+
+@keyframes static-flicker {
+  0% { opacity: 0.8; transform: translateX(0); }
+  20% { opacity: 0.3; transform: translateX(-5px); }
+  40% { opacity: 0.9; transform: translateX(5px); }
+  60% { opacity: 0.4; transform: translateX(-3px); }
+  80% { opacity: 0.7; transform: translateX(3px); }
+  100% { opacity: 0.8; transform: translateX(0); }
+}
+
+.crash-main-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #1a0000 0%, #330000 100%);
+  border: 4px solid #ff0000;
+  border-radius: 20px;
+  padding: 60px 80px;
+  text-align: center;
+  box-shadow: 
+    0 0 100px rgba(255, 0, 0, 0.8),
+    0 0 200px rgba(255, 0, 0, 0.5),
+    inset 0 0 50px rgba(255, 0, 0, 0.2);
+  pointer-events: all;
+  z-index: 10002;
+  animation: pulse-glow 0.5s infinite alternate;
+}
+
+@keyframes pulse-glow {
+  from {
+    box-shadow: 
+      0 0 100px rgba(255, 0, 0, 0.8),
+      0 0 200px rgba(255, 0, 0, 0.5),
+      inset 0 0 50px rgba(255, 0, 0, 0.2);
+  }
+  to {
+    box-shadow: 
+      0 0 150px rgba(255, 0, 0, 1),
+      0 0 250px rgba(255, 0, 0, 0.7),
+      inset 0 0 70px rgba(255, 0, 0, 0.4);
+  }
+}
+
+.crash-skull {
+  font-size: 100px;
+  margin-bottom: 20px;
+  animation: skull-bounce 0.3s infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+}
+
+@keyframes skull-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.1); }
+}
+
+.crash-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 48px;
+  font-weight: 900;
+  color: #ff0000;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  margin-bottom: 15px;
+  text-shadow: 
+    0 0 10px #ff0000,
+    0 0 20px #ff0000,
+    0 0 30px #ff0000,
+    2px 2px 0 #000;
+  animation: glitch-text 0.3s infinite;
+}
+
+@keyframes glitch-text {
+  0% { 
+    transform: translate(0); 
+    text-shadow: 
+      0 0 10px #ff0000,
+      0 0 20px #ff0000,
+      2px 2px 0 #000;
+  }
+  20% { 
+    transform: translate(-3px, 3px); 
+    text-shadow: 
+      3px 0 #00ffff,
+      -3px 0 #ff00ff,
+      2px 2px 0 #000;
+  }
+  40% { 
+    transform: translate(3px, -3px); 
+    text-shadow: 
+      -3px 0 #00ff00,
+      3px 0 #ff0000,
+      2px 2px 0 #000;
+  }
+  60% { 
+    transform: translate(-2px, -2px); 
+    text-shadow: 
+      2px 0 #ffff00,
+      -2px 0 #ff00ff,
+      2px 2px 0 #000;
+  }
+  80% { 
+    transform: translate(2px, 2px); 
+    text-shadow: 
+      -2px 0 #00ffff,
+      2px 0 #ff0000,
+      2px 2px 0 #000;
+  }
+  100% { 
+    transform: translate(0); 
+    text-shadow: 
+      0 0 10px #ff0000,
+      0 0 20px #ff0000,
+      2px 2px 0 #000;
+  }
+}
+
+.crash-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  color: #ff6666;
+  margin-bottom: 25px;
+  letter-spacing: 3px;
+}
+
+.crash-generation {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  color: #00ff00;
+  font-weight: bold;
+  margin-bottom: 10px;
+  animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.crash-mutation {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: #ffff00;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 2px solid #ffff00;
+  display: inline-block;
+  animation: mutation-flicker 0.2s infinite;
+}
+
+@keyframes mutation-flicker {
+  0%, 100% { opacity: 1; border-color: #ffff00; color: #ffff00; }
+  50% { opacity: 0.5; border-color: #ff00ff; color: #ff00ff; }
+}
+
+.crash-glitch-text {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #ff0000;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.crash-error-cascade {
+  position: fixed;
+  top: 100px;
+  left: 50px;
+  right: 50px;
+  pointer-events: none;
+  z-index: 10001;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.crash-error-line {
+  background: rgba(0, 0, 0, 0.9);
+  border-left: 4px solid #ff0000;
+  padding: 12px 20px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #ff6666;
+  box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.crash-error-prefix {
+  color: #ff0000;
+  font-weight: bold;
+  margin-right: 10px;
+  animation: blink 0.8s infinite;
+}
+
+.crash-scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    transparent 50%,
+    rgba(0, 0, 0, 0.3) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 10003;
+  animation: scanline-move 8s linear infinite;
+}
+
+@keyframes scanline-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+.crash-crt-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
+  z-index: 10004;
+}

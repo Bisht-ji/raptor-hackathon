@@ -1,0 +1,152 @@
+/* Generation-Specific Visual Effects */
+
+.generation-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1; /* FIXED: Lower z-index to stay behind content */
+}
+
+/* Chromatic Aberration Effect */
+.chromatic-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  mix-blend-mode: screen;
+  opacity: 0.3;
+}
+
+.chromatic-aberration .chromatic-layer {
+  animation: chromatic-shift 3s ease-in-out infinite;
+}
+
+@keyframes chromatic-shift {
+  0%, 100% {
+    filter: drop-shadow(2px 0 0 rgba(255, 0, 0, 0.5)) 
+            drop-shadow(-2px 0 0 rgba(0, 255, 255, 0.5));
+  }
+  50% {
+    filter: drop-shadow(3px 0 0 rgba(255, 0, 0, 0.7)) 
+            drop-shadow(-3px 0 0 rgba(0, 255, 255, 0.7));
+  }
+}
+
+/* Scanlines Effect */
+.scanlines-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 65, 0.03) 0px,
+    rgba(0, 255, 65, 0) 1px,
+    rgba(0, 255, 65, 0) 2px,
+    rgba(0, 255, 65, 0.03) 3px
+  );
+  animation: scanline-move 8s linear infinite;
+}
+
+@keyframes scanline-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}
+
+/* Blur Wave Effect */
+.blur-wave-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(0.5px);
+  animation: blur-pulse 4s ease-in-out infinite;
+}
+
+@keyframes blur-pulse {
+  0%, 100% { backdrop-filter: blur(0.3px); }
+  50% { backdrop-filter: blur(0.8px); }
+}
+
+/* Red Tint Effect */
+.red-tint-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 0, 0, 0.05) 0%,
+    rgba(139, 0, 0, 0.1) 100%
+  );
+  mix-blend-mode: multiply;
+}
+
+/* Glow Effect */
+.glow-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 100px rgba(255, 0, 255, 0.1);
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: inset 0 0 100px rgba(255, 0, 255, 0.1);
+  }
+  50% {
+    box-shadow: inset 0 0 150px rgba(255, 0, 255, 0.2);
+  }
+}
+
+/* Blur Subtle Effect */
+.blur-subtle-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(0.3px);
+}
+
+/* Vignette Effect */
+.vignette-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* Text Shadow Effect (this one affects editor directly via CSS variable) */
+.text-shadow-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.text-shadow .editor-main {
+  text-shadow: 0 0 10px currentColor;
+}
+
+/* Transition between effects */
+.generation-effects > div {
+  transition: opacity 0.5s ease-in-out;
+}
